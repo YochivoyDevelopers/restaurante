@@ -1,0 +1,38 @@
+.title{
+    font-weight: bold;
+    font-size: 1.2rem;
+    justify-content: center;
+}
+.borderred{
+    height: 2px;
+    width: 1200px;
+    background: rgb(63, 0, 0);
+    margin: 20px 0px;
+}
+.details{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 1px dashed rgb(206, 0, 0);
+    padding: 10px 0px;
+    ion-label{
+        font-weight: bold;
+    }
+}
+.total{
+    display: flex;
+    flex-direction: inherit;
+    justify-content: center;
+    padding: 15px 0px;
+    .lbl{
+        font-weight: bold;
+        padding:20px;
+    }
+    .amount{
+        background: #ff0019;
+        color: rgb(255, 207, 32);
+        padding: 20px;
+        font-weight: bold;
+        text-align: center;
+    }
+}

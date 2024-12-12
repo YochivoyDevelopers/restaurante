@@ -14,6 +14,7 @@
     <p class="lbl">{{'Restaurant Locations' | translate}}</p>
     <ion-searchbar class="ion-no-padding" mode="ios" [(ngModel)]="address" (ionInput)="updateSearch()"
       (click)="openMap()" (ionCancel)="dismiss()">
+      
     </ion-searchbar>
     <p class="lbl">{{'Per Person Dish' |translate}} $</p>
     <ion-input class="inputText" [(ngModel)]="dishPrice" type="number" placeholder="$"></ion-input>

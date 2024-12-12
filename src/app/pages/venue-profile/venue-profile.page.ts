@@ -188,19 +188,12 @@ export class VenueProfilePage implements OnInit {
   async cover() {
     const actionSheet = await this.actionSheetController.create({
       header: this.util.translate('Choose from'),
-      buttons: [{
-        text: this.util.translate('Camera'),
-        icon: 'camera',
-        handler: () => {
-          console.log('Delete clicked');
-          this.opemCamera('camera');
-        }
-      }, {
+      buttons: [ {
         text: this.util.translate('Gallery'),
         icon: 'image',
         handler: () => {
           console.log('Share clicked');
-          this.opemCamera('gallery');
+          this.openCameraOrGalleryWeb('gallery');
         }
       }, {
         text: this.util.translate('Cancel'),
@@ -218,19 +211,12 @@ export class VenueProfilePage implements OnInit {
     console.log('num', num);
     const actionSheet = await this.actionSheetController.create({
       header: this.util.translate('Choose from'),
-      buttons: [{
-        text: this.util.translate('Camera'),
-        icon: 'camera',
-        handler: () => {
-          console.log('Delete clicked');
-          this.opemCamera('camera', num);
-        }
-      }, {
+      buttons: [ {
         text: this.util.translate('Gallery'),
         icon: 'image',
         handler: () => {
           console.log('Share clicked');
-          this.opemCamera('gallery', num);
+          this.openCameraOrGalleryWeb('gallery', num);
         }
       }, {
         text: this.util.translate('Cancel'),
@@ -302,58 +288,69 @@ export class VenueProfilePage implements OnInit {
     });
   }
 
-  opemCamera(type, num?) {
-    const options: CameraOptions = {
-      quality: 100,
-      targetHeight: 700,
-      targetWidth: 700,
-      destinationType: this.camera.DestinationType.DATA_URL,
-      encodingType: this.camera.EncodingType.JPEG,
-      mediaType: this.camera.MediaType.PICTURE,
-      sourceType: type === 'camera' ? 1 : 0
-    };
-    console.log('open');
-    this.camera.getPicture(options).then((imageData) => {
-      const base64Image = 'data:image/jpeg;base64,' + imageData;
-      this.image = base64Image;
-      this.util.show();
-      const id = localStorage.getItem('uid') + '/' + this.makeid(10);
-      firebase.storage().ref().child(localStorage.getItem('uid')).child(btoa(id) + '.jpg')
-        .putString(base64Image, 'data_url').then((snapshot) => {
-          this.util.hide();
-          snapshot.ref.getDownloadURL().then((url) => {
-            console.log('url uploaded', url);
-            if (!num) {
-              this.coverImage = url;
-            } else if (num === 1 || num === '1') {
-              this.image1 = url;
-            } else if (num === 2 || num === '2') {
-              this.image2 = url;
-            } else if (num === 3 || num === '3') {
-              this.image3 = url;
-            } else if (num === 4 || num === '4') {
-              this.image4 = url;
-            } else if (num === 5 || num === '5') {
-              this.image5 = url;
-            } else if (num === 6 || num === '6') {
-              this.image6 = url;
-            }
+// Variables para almacenar las imágenes y la URL
+imageUrls: string[] = [];
 
-          });
-        }, error => {
-          this.util.hide();
-          console.log(error);
-        }).catch((error) => {
-          console.log(error);
-          this.util.hide();
-          this.util.errorToast(this.util.translate('Something went wrong'));
-        });
-    }, (err) => {
-      this.util.hide();
-      console.log(err);
-      this.util.errorToast(this.util.translate('Something went wrong'));
-    });
+
+async openCameraOrGalleryWeb(type:'gallery', num?: string) {
+  if (this.imageUrls.length >= 6) {
+    alert('Ya has seleccionado 6 imágenes.');
+    return; // No permite más de 6 imágenes
   }
+
+   if (type === 'gallery') {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'image/*'; // Solo imágenes
+    input.onchange = (event: any) => {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (e: any) => {
+          console.log('Imagen seleccionada:', e.target.result);
+          this.uploadImageToFirebase(e.target.result, num); // Sube la imagen a Firebase
+        };
+        reader.readAsDataURL(file); // Convierte la imagen a Base64
+      }
+    };
+    input.click();
+  }
+}
+
+// Función para subir la imagen a Firebase
+uploadImageToFirebase(base64Image: string, num?: string) {
+  this.util.show();  // Muestra el cargador (puedes personalizarlo)
+  const id = localStorage.getItem('uid') + '/' + this.makeid(10);
+  firebase.storage().ref().child(localStorage.getItem('uid')).child(btoa(id) + '.jpg')
+    .putString(base64Image, 'data_url')
+    .then((snapshot) => {
+      this.util.hide(); // Oculta el cargador
+      snapshot.ref.getDownloadURL().then((url) => {
+        console.log('Imagen subida con éxito:', url);
+        // Dependiendo de `num`, asigna la URL a la imagen correspondiente
+        if (!num) {
+          this.coverImage = url;
+        } else if (num === '1') {
+          this.image1 = url;
+        } else if (num === '2') {
+          this.image2 = url;
+        } else if (num === '3') {
+          this.image3 = url;
+        } else if (num === '4') {
+          this.image4 = url;
+        } else if (num === '5') {
+          this.image5 = url;
+        } else if (num === '6') {
+          this.image6 = url;
+        }
+      });
+    }, error => {
+      this.util.hide(); // Oculta el cargador
+      console.log('Error al subir la imagen:', error);
+      this.util.errorToast('Algo salió mal al subir la imagen.');
+    });
+}
+
 
   makeid(length) {
     let result = '';
@@ -400,7 +397,7 @@ export class VenueProfilePage implements OnInit {
       this.util.hide();
       console.log(data);
       this.util.publishProfile('update');
-      this.util.showToast(this.util.translate('Restaurant updated successfully'), 'success', 'bottom');
+      this.util.showToast(this.util.translate('Restaurant updated'), 'success', 'bottom');
       this.navCtrl.back();
     }, error => {
       this.util.hide();

@@ -121,7 +121,7 @@ export class OrdersPage implements OnInit {
             this.newOrders.push(element);
           } else if (element.status === 'accepted' || element.status === 'ongoing') {
             this.onGoingOrders.push(element);
-          } else if (element.status === 'delivered' || element.status === 'cancel' || element.status === 'rejected') {
+          } else if (element.status === 'delivered') {
             this.oldOrders.push(element);
           }
         });

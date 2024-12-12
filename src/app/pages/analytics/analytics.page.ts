@@ -91,28 +91,29 @@ export class AnalyticsPage implements OnInit {
           console.log("orders", data);
           if (data && data.length > 0) {
             this.allOrders = data;
-
+  
             let newOrders = [];
             let onGoingOrders = [];
             let oldOrders = [];
             let others = [];
             this.totalEarning = 0;
+  
             data.forEach(element => {
               element.order = JSON.parse(element.order);
-              this.totalEarning = this.totalEarning + (element.grandTotal);
-              if (element.status === "created") {
-                newOrders.push(element);
-              } else if (
-                element.status === "accepted" ||
-                element.status === "ongoing"
-              ) {
-                onGoingOrders.push(element);
-              } else if (element.status === "delivered") {
+  
+              // Sumar solo las órdenes entregadas
+              if (element.status === "delivered") {
+                this.totalEarning += parseFloat(element.grandTotal);
                 oldOrders.push(element);
+              } else if (element.status === "created") {
+                newOrders.push(element);
+              } else if (element.status === "accepted" || element.status === "ongoing") {
+                onGoingOrders.push(element);
               } else if (element.status === "canceled") {
                 others.push(element);
               }
             });
+  
             this.totalEarning = parseFloat(this.totalEarning).toFixed(2);
             console.log("new order", newOrders);
             this.pieChartData = [];
@@ -140,6 +141,7 @@ export class AnalyticsPage implements OnInit {
         this.util.errorToast(this.util.translate("Something went wrong"));
       });
   }
+  
 
   changeMode() {
     console.log(this.report);

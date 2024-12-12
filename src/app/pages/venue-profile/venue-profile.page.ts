@@ -397,7 +397,7 @@ uploadImageToFirebase(base64Image: string, num?: string) {
       this.util.hide();
       console.log(data);
       this.util.publishProfile('update');
-      this.util.showToast(this.util.translate('Restaurant updated successfully'), 'success', 'bottom');
+      this.util.showToast(this.util.translate('Restaurant updated'), 'success', 'bottom');
       this.navCtrl.back();
     }, error => {
       this.util.hide();

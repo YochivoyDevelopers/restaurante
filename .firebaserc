@@ -1,6 +1,7 @@
 {
   "projects": {
-    "deliveryapp-de7bf": "deliveryapp-54574"
+    "deliveryapp-de7bf": "deliveryapp-54574",
+    "deliveryapp-54574": "deliveryapp-54574"
   },
   "targets": {},
   "etags": {},

@@ -1,3 +1,75 @@
 .edt_icn{
     width: 20px;
 }
+
+ion-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    align-content: center;
+    width: 100%;
+    height: 9vh;
+    height: 4rem;
+    transition: all 0.2s linear;
+    padding: 0px 3%;
+    border-radius: 0 0 30px 0;
+    background-color: rgb(255, 56, 76) !important;
+}
+
+ion-title{
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+}
+
+
+.mainContent {
+    padding: 20px;
+}
+  
+h2 {
+    font-size: 1.5rem;
+    color: #e74c3c; 
+    margin-top: 20px;
+    text-align: center;
+}
+  
+
+ion-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 15px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.322);
+    transition: all 0.3s ease;
+}
+  
+ion-item:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); 
+}
+  
+
+ion-label {
+    font-size: 1rem;
+    color: #333;
+    font-weight: bold;
+}
+  
+
+.edt_icn {
+    width: 24px; 
+    height: 24px;
+    cursor: pointer;
+    transition: transform 0.2s ease; 
+}
+  
+.edt_icn:hover {
+    transform: scale(1.1);
+}
+
+  
+
+@media (prefers-color-scheme: dark) {
+    
+}

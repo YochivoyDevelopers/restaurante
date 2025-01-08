@@ -1,34 +1,102 @@
-ion-item{
-    border: 1px solid lightgray;
-    border-radius: 5px;
-    margin-top: 10px;
+ion-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    align-content: center;
+    width: 100%;
+    height: 9vh;
+    height: 4rem;
+    transition: all 0.2s linear;
+    padding: 0px 3%;
+    background-color: rgb(255, 56, 76) !important;
 }
-.delete_icn{
-    color: white;
+
+ion-title{
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+}
+
+
+ion-item {
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    margin-top: 15px;
+    padding: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.delete_icn {
+    color: #ff4d4f;
     font-weight: 600;
 }
 
-.mainContent{
-    .coverPlaceholder{
+.mainContent {
+    .coverPlaceholder {
         text-align: center;
-        padding: 60px;
-        border: 1px solid lightgray;
-        border-radius: 10px;
-        margin-top: 10px;
+        padding: 50px;
+        border: 1px solid #e0e0e0;
+        border-radius: 12px;
+        margin-top: 20px;
+        cursor: pointer;
     }
-    .coverReal{
-        margin-top: 10px;
+
+    .coverReal {
+        margin-top: 20px;
         width: 100%;
-        height: 150px;
-        border-radius: 5px;
+        height: 200px;
+        border-radius: 10px;
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
     }
 
-    ion-button{
-        --border-radius: 5px;
+    ion-button {
+        --border-radius: 8px;
         font-weight: 600;
+        // background-color: rgb(255, 56, 76);
         margin-top: 20px;
+        
     }
+
+    ion-label {
+        font-size: 16px;
+        color: #333;
+    }
+
+    ion-select, ion-toggle {
+        --padding-start: 10px;
+        --padding-end: 10px;
+    }
+
+    ion-textarea {
+        --border-radius: 8px;
+        // --background: #f1f1f1;
+        font-size: 14px;
+    }
+
+    .sub {
+        // background-color: #f8f8f8;
+        border-radius: 8px;
+        margin-top: 10px;
+        padding: 10px;
+    }
+
+    .noLines {
+        margin-top: 15px;
+    }
+
+    .coverPlaceholder p {
+        color: #888;
+        font-size: 14px;
+        margin-top: 10px;
+    }
+
+    ion-icon {
+        color: rgb(255, 56, 76);
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    
 }

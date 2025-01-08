@@ -1,10 +1,10 @@
 <ion-header>
-  <ion-toolbar color="primary">
-    <ion-buttons slot="start">
+  <ion-toolbar  color="rgb(255, 56, 76)">
+    <ion-buttons slot="start" style="color: white;">
       <ion-back-button text="" mode="md"></ion-back-button>
     </ion-buttons>
     <ion-title>{{'Foods' | translate}}</ion-title>
-    <ion-button (click)="addnew()" slot="end" fill="clear" color="light">
+    <ion-button (click)="addnew()" slot="end" fill="clear" style="color: white;">
       <ion-icon slot="icon-only" name="add"></ion-icon>
     </ion-button>
   </ion-toolbar>
@@ -29,6 +29,10 @@
         </p>
       </ion-label>
     </ion-item>
+
+
+
+    
     <div *ngFor="let item of categories">
       <ion-label class="head_lbl">{{item.name}}</ion-label>
 

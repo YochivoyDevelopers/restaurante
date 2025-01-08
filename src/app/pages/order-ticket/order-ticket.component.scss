@@ -1,3 +1,22 @@
+ion-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    align-content: center;
+    width: 100%;
+    height: 9vh;
+    height: 4rem;
+    transition: all 0.2s linear;
+    padding: 0px 3%;
+    border-radius: 0 0 30px 0;
+    background-color: rgb(255, 56, 76) !important;
+}
+
+ion-title{
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+}
+
 .ticket_content_div {
     align-items: space-evenly;
     display: flex;
@@ -48,3 +67,54 @@
     justify-content: space-between;
     width: 66px;
 }
+
+.frame {
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 600px;
+    // background: linear-gradient(135deg, #e0f7fa, #ffffff); /* Fondo suave */
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    border: 1px solid #ddd;
+    overflow: hidden; /* Evitar que el contenido sobresalga */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+  }
+  
+  .main_content_div {
+    width: 100%;
+  }
+  
+  .section-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #00796b;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+  
+  .section-description {
+    font-size: 16px;
+    color: #555;
+    text-align: center;
+    line-height: 1.5;
+    margin-bottom: 25px;
+    padding: 0 15px;
+  }
+  
+  ion-spinner {
+    font-size: 50px;
+  }
+  
+  ion-spinner[color='primary'] {
+    --spinner-color:
+  }
+  

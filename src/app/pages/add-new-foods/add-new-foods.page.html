@@ -1,17 +1,11 @@
 <ion-header>
-  <ion-toolbar color="primary">
+  <ion-toolbar color="rgb(255, 56, 76)">
     <ion-buttons slot="start">
-      <ion-back-button mode="md" text=""></ion-back-button>
+      <ion-back-button mode="md" text="" style="color: white;"></ion-back-button>
     </ion-buttons>
-    <!-- <ion-title>{{isEdit ? 'Edit Food':'Add Food' }}</ion-title> -->
-
     <ion-title *ngIf="isEdit">{{'Edit Food' | translate}}</ion-title>
 
     <ion-title *ngIf="!isEdit">{{'Add Food' | translate}}</ion-title>
-
-    <!-- <ion-button *ngIf="isEdit == true" slot="end" class="delete_icn" icli fill="clear">
-      Delete
-    </ion-button> -->
   </ion-toolbar>
 </ion-header>
 
@@ -76,7 +70,7 @@
         (click)="cover()"
         *ngIf="!coverImage || coverImage ==''"
       >
-        <ion-icon name="cloud-upload-outline" color="primary"></ion-icon>
+        <ion-icon name="cloud-upload-outline" color="rgb(255, 56, 76)"></ion-icon>
         <p>{{'Upload foods cover image here' | translate}}</p>
       </div>
       <div
@@ -144,7 +138,7 @@
           </ion-button>
         </ion-col>
         <ion-col size="6">
-          <ion-button expand="block" (click)="deleteFood()">Eliminar</ion-button>
+          <ion-button expand="block" (click)="deleteFood()"  *ngIf="isEdit">Eliminar</ion-button>
         </ion-col>
       </ion-row>
     </ion-list>

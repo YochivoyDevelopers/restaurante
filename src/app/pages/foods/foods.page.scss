@@ -1,94 +1,116 @@
-.mainContent{
+ion-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    align-content: center;
+    width: 100%;
+    height: 9vh;
+    height: 4rem;
+    transition: all 0.2s linear;
+    padding: 0px 3%;
+    border-radius: 0 0 30px 0;
+    background-color: rgb(255, 56, 76) !important;
+}
+
+ion-title{
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+}
+
+.mainContent {
     padding: 20px;
-    // .cateName{
-    //     margin: 10px 0px;
-    //     font-size: 1.5rem;
-    //     color: black;
-    //     font-weight: bold;
-    // }
-    // .foods{
-    //     border-radius: 5px;
-    //     margin-top: 10px;
-    //     padding: 10px;
-    //     box-shadow: 0px 1px 14px 2px lightgrey;
-    //     .bgCover{
-    //         width: 90px;
-    //         height: 90px;
-    //         border-radius: 5px;
-    //         background-position: center;
-    //         background-repeat: no-repeat;
-    //         background-size: cover;
-    //     } 
-    //     .name{
-    //         margin: 0px;
-    //         font-size: 1.3rem;
-    //         font-weight: bold;
-    //         color: var(--ion-color-primary);
-    //     }
-    //     .description{
-    //         margin: 0px;
-    //         font-size: 1rem;
-    //     }
-    //     .price{
-    //         margin: 0px;
-    //         font-size: 1rem;
-    //     }
-    //     .cate{
-    //         margin: 0px;
-    //         font-size: 1rem;
-    //         color: var(--ion-color-primary);
-    //     }
-    // }
+    border-radius: 8px;
+  }
+  
+  .head_lbl {
+    font-weight: 700;
+    font-size: 22px;
+    color: #333;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+  
+  .card_div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+
+    transition: all 0.3s ease;
+  }
+  
+  .card_div:hover {
+    transform: scale(1.03); /* Slight zoom effect on hover */
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .back_image {
+    width: 120px;
+    height: 120px;
+    border-radius: 8px;
+    object-fit: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  .content_div {
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .content_div ion-label {
+    margin-bottom: 10px;
+  }
+  
+  .title {
+    font-weight: 600;
+    font-size: 18px;
+    color: #333;
+  }
+  
+  .small {
+    color: rgb(71, 71, 71);
+    font-size: 14px;
+  }
+  
+  .veg {
+    color: green;
+    font-weight: bold;
+  }
+  
+  .nonVeg {
+    color: red;
+    font-weight: bold;
+  }
+  
+  .card_div .title {
+    font-size: 16px;
+    color: rgb(255, 56, 76);
+  }
+  
 
 
-    .head_lbl{
-        font-weight: 600;
-        font-size: 20px;
-        display: block;
-        margin-bottom: 10px;
-    }
+@media (prefers-color-scheme: dark) {
+    .head_lbl {
+        color: #dadada;
+      }
 
+      .small {
+        color: rgb(190, 190, 190);
+        font-size: 14px;
+      }
 
+      .card_div {
+        box-shadow: 0px 4px 8px rgba(182, 182, 182, 0.15);
 
-    .card_div{
-        display: flex;
-        flex-direction: row;
-        box-shadow: 0px 3px  6px rgba(0,0,0,0.2);
-        border-radius: 5px;
-        padding: 15px;
-        margin-bottom: 15px;
-        .back_image{
-            width: 90px;
-            height: 90px;
-            border-radius: 5px;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-        .content_div{
-            padding-left: 20px;
-            ion-label {
-                display: flex;
-            }
-
-            .title{
-                font-weight: 600;
-                font-size: 16px;
-            }
-            .small{
-                color: gray;
-                font-size: 14px;
-            }
-            .veg{
-                color: green;
-            }
-            .nonVeg{
-                color: red;
-            }
-            .lonveg{
-                color: var(--ion-color-primary);
-            }
-        }
-    }
-    
+      }
+      
+      .card_div:hover {
+        box-shadow: 0px 6px 12px rgba(167, 167, 167, 0.2);
+      }
 }
